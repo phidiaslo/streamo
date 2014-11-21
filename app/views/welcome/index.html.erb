@@ -1,0 +1,59 @@
+<div class="container featured">
+<%= image_tag "gundam.png" %>
+</div>
+
+<div class="container">
+<div class="row content-content">
+  <div class="col-md-7 border-right">
+    
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <b>Recent Ongoing Episodes</b> <small><%= link_to 'Show All', ongoing_episodes_path %></small>
+  </div>
+
+  <table class="table table-bordered">
+  <tbody>
+    <% @OngoingEpisodes.each do |episode| %>
+      <tr>
+        <td><%= link_to "#{episode.name}", episode %><span class="upload-date"><%= episode.created_at.strftime("%A, %-d %b %Y") %></span></td>
+      </tr>
+    <% end %>
+  </tbody>
+  </table>
+</div>
+
+  <center><p><b>Recently Added Series</b> <small><%= link_to 'Show All', series_update_path %></small></p></center>
+
+    <% @series.each do |series| %>
+      <div class="col-md-3 no-padding">
+        <div class="thumbnail">
+           <%= link_to image_tag(series.cover.url), series %>
+           
+          <div class="caption">
+            <p><%= series.name.truncate(23) %></p>
+            <% if series.status == "Ongoing" %>
+              <p class="label label-danger"><%= series.status %></p>
+            <% else %>
+              <p class="label label-primary"><%= series.status %></p>
+            <% end %>
+            <div class="pull-right">
+            
+            <a tabindex="0" class="btn btn-xs btn-link" role="button" data-toggle="popover" data-trigger="focus" title="<%= series.name %> (<%= series.status %>)" data-content="<%= series.synopsis %>">Info</a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+   </div>
+   <div class="col-md-3 border-right">
+    <%= render 'layouts/search' %>
+    <%= render 'layouts/facebook' %>
+
+   </div>
+
+   <div class="col-md-2">
+  </div>
+</div>
+
+</div>

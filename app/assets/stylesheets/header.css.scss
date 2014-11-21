@@ -1,0 +1,52 @@
+.navbar {
+  border-radius: 0px;
+  margin-bottom: 0px;
+}
+
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: darkred;
+}
+
+.navbar-brand {
+  padding: 23px;
+  font-size: 30px;
+  height: 100%;
+  border-right: 1px solid darkred;
+  border-left: 1px solid darkred;
+  margin-right: 10px;
+}
+
+.navbar-default {
+  background-color: #C23536;
+  border-color: darkred;
+}
+
+
+.navbar-default .navbar-brand {
+  color: #FFFFFF;
+}
+
+.navbar-default .navbar-nav {
+  li {
+    padding-left: 10px;
+    a {
+      padding-bottom: 0px;
+      padding-left: 0px;
+      padding-right: 30px;
+      color: #FFFFFF;
+    }
+    a:hover {
+	  color: yellow;
+	} 
+	
+  }
+}
+
+.sm-yellow {
+    display: block;
+    font-size: 10px;
+    color: yellow;
+    padding-bottom: 15px;
+    padding-right: 30px;
+  }

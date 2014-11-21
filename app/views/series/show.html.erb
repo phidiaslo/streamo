@@ -1,0 +1,66 @@
+<div class="container bread-container">
+  <%= render 'layouts/flash' %>
+  <div id="breadcrum">
+    <%= render_breadcrumbs %>
+  </div>
+  <div class="pull-right bookmarklet">
+          
+
+  </div>
+</div>
+
+<div class="container">
+  <div class="row content-content">
+    <div class="col-md-2 top-bottom-pad no-right-pad">
+      <p><%= image_tag(@series.cover.url, class: "img-border") %></p>
+      <center><p><b>Date Aired:</b> <%= @series.date_aired.strftime("%-d %b %Y") %></p></center>
+    </div>
+    <div class="col-md-5 border-right">
+      <h1><strong><%= @series.name %></strong> <small><%= link_to 'Edit', edit_series_path(@series), remote: true %></small></h1>
+
+      <p><%= @series.synopsis %></p>
+
+      <div class="social-panel">
+        
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=705835326160298&version=v2.0";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+        <div class="fb-like" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+                  
+      </div>
+         
+
+        <div class="panel panel-default">
+        <div class="panel-heading"><b>Total Views:</b> <%= @series.view_count %><span class="label label-danger pull-right sm-margin-top"><%= @series.status %></span></div>
+
+        <table class="table table-bordered">
+        
+        <tbody>
+          <% @episodes.each do |episode| %>
+            <tr>
+              <td><%= link_to "#{episode.name}", episode %><span class="upload-date"><%= episode.created_at.strftime("%A, %-d %b %Y") %></span></td>
+            </tr>
+          <% end %>
+        </tbody>
+        </table>
+        </div>
+        </div>
+      
+      <div class="col-md-3 border-right">
+        <%= render 'layouts/search' %>
+        <%= render 'layouts/facebook' %>
+      </div>
+      <div class="col-md-2">
+    </div>
+
+  </div>
+
+</div>
+</div>
+

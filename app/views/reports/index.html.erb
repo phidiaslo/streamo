@@ -1,0 +1,28 @@
+<div class="container content-content">
+
+<h1>Pending Reports</h1>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Episode Name</th>
+      <th>Problem</th>
+      <th>Remarks</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reports.each do |report| %>
+      <tr>
+        <td><%= report.episode.name %> <span class="sender">Reported by <a href="mailto:<%= report.email %>?subject=[Anibeam] <%= report.episode.name %>"><%= report.email %></a> on <%= report.created_at.strftime("%A, %-d %b %Y") %></span></td>
+        <td><%= report.problem %></td>
+        <td class="remarks"><%= report.other %></td>
+        <td><%= link_to 'Edit Episode', edit_episode_path(:id => report.episode_id), remote: true %></td>
+        <td><%= link_to 'Destroy', report, method: :delete, data: { confirm: 'Are you sure you want to delete?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @reports %>
+</div>

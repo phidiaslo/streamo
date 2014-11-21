@@ -1,0 +1,43 @@
+#movie {
+  border: 1px solid #afafaf;
+  width: 100%;
+  position: relative;
+  z-index: 102;
+}
+
+.lightSwitcher {
+  position:absolute; 
+  z-index:101; 
+  background-image:url(light_bulb.png); 
+  background-repeat:no-repeat; 
+  background-position:left; 
+  padding: 0 0 0 20px; 
+  outline:none; 
+  text-decoration:none;
+  }
+  
+.lightSwitcher:hover {
+  text-decoration:underline;
+  }
+  
+#shadow {
+  position:fixed;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  height:100%;
+  width:100%;
+  margin:0;
+  padding:0;
+  background:#000;
+  opacity:.85;
+  filter: alpha(opacity=85);
+  -moz-opacity: 0.85;
+  z-index: 100;
+  }
+  
+.turnedOff {
+  color:#ffff00; 
+  background-image:url(light_bulb_off.png);
+  }

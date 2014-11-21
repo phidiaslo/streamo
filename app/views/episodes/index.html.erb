@@ -1,0 +1,57 @@
+<div class="container featured">
+<%= image_tag "gundam.png" %>
+</div>
+<div class="container">
+<div class="row content-content">
+  <div class="col-md-9 border-right">
+    
+
+<div class="panel panel-default">
+  <div class="panel-heading"><b>Recent Mecha Episodes</b> <%= link_to 'Add New Episode', new_episode_path, class: "btn-sm btn-link" %></div>
+
+  <table class="table table-bordered">
+  
+  <tbody>
+    <% @episodes.each do |episode| %>
+      <tr>
+        <td><%= link_to "#{episode.name}", episode %><span class="upload-date"><%= episode.created_at.strftime("%A, %-d %b %Y") %></span></td>
+        
+        <td><%= link_to 'Edit', edit_episode_path(episode) %></td>
+        <td><%= link_to 'Destroy', episode, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  </table>
+  </div>
+
+  <center><h2><b>Recommended</b> Mecha Series<small><%= link_to 'Add New Series', new_series_path, class: "btn-sm btn-link" %></small></h2></center>
+
+    <% @series.each do |series| %>
+      <div class="col-md-3 no-padding">
+        <div class="thumbnail">
+           <%= link_to image_tag(series.cover.url), series, :title => "#{series.synopsis}" %>
+          <div class="caption">
+            <p><%= series.name.truncate(25) %></p>
+            <% if series.status == "On-going" %>
+              <p class="label label-primary"><%= series.status %></p>
+            <% else %>
+              <p class="label label-success"><%= series.status %></p>
+            <% end %>
+            <div class="pull-right">
+            <%= link_to 'Edit', edit_series_path(series) %> |  
+            <%= link_to 'Destroy', series, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+   </div>
+ 
+  <div class="col-md-3">
+
+  </div>
+
+</div>
+
+</div>
+

@@ -1,0 +1,15 @@
+        <% if @previous %>
+          <button type="button" class="btn btn-default btn-sm prev-btn">
+        <% else %>
+          <button type="button" class="btn btn-default btn-sm prev-btn" disabled="disabled">
+        <% end %>
+            <%= link_to "Prev", @previous %>
+          </button>
+        
+        <% if @next %>  
+          <button type="button" class="btn btn-default btn-sm next-btn">
+        <% else %>
+          <button type="button" class="btn btn-default btn-sm next-btn" disabled="disabled">
+        <% end %>
+            <%= link_to "Next", @next, class: "next-button" %>
+          </button>

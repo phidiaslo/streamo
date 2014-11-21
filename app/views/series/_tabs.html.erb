@@ -1,0 +1,73 @@
+    <div role="tabpanel">
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#alphabetical" aria-controls="alphabetical" role="tab" data-toggle="tab">Alphabetical</a></li>
+        <li role="presentation"><a href="#dateaired" aria-controls="dateaired" role="tab" data-toggle="tab">Latest</a></li>
+        <li role="presentation"><a href="#ongoing" aria-controls="ongoing" role="tab" data-toggle="tab">Ongoing</a></li>
+        <li role="presentation"><a href="#complete" aria-controls="complete" role="tab" data-toggle="tab">Complete</a></li>
+        <li role="presentation"><a href="#mostviewed" aria-controls="mostviewed" role="tab" data-toggle="tab">Most Viewed</a></li>
+      </ul>
+
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="alphabetical">
+          <%= render 'series/gotoletter' %>
+          <%= render 'series/alphabet' %>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="dateaired">
+          <div class="panel panel-default margin-top-15">
+            <div class="panel-heading"><b>Recently Released Anime</b></div>
+              <table class="table table-bordered">
+                <tbody>
+                  <% @recent.each do |series| %>
+                  <tr>
+                    <td><%= link_to "#{series.name}", series %><span class="upload-date"><%= series.date_aired.strftime("%A, %-d %b %Y") %></span></td>
+                  </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="ongoing">
+          <div class="panel panel-default margin-top-15">
+            <div class="panel-heading"><b>Ongoing</b></div>
+              <table class="table table-bordered">
+                <tbody>
+                  <% @ongoing.each do |series| %>
+                  <tr>
+                    <td><%= link_to "#{series.name}", series %><span class="upload-date"><%= series.date_aired.strftime("%A, %-d %b %Y") %></span></td>
+                  </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="complete">
+          <div class="panel panel-default margin-top-15">
+            <div class="panel-heading"><b>Complete</b></div>
+              <table class="table table-bordered">
+                <tbody>
+                  <% @complete.each do |series| %>
+                  <tr>
+                    <td><%= link_to "#{series.name}", series %><span class="upload-date"><%= series.date_aired.strftime("%A, %-d %b %Y") %></span></td>
+                  </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="mostviewed">
+          <div class="panel panel-default margin-top-15">
+            <div class="panel-heading"><b>Top 100 Mecha Series</b></div>
+              <table class="table table-bordered">
+                <tbody>
+                  <% @popular.each do |series| %>
+                  <tr>
+                    <td><%= link_to "#{series.name}", series %><span class="upload-date"><%= series.view_count %> views</span></td>
+                  </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+        </div>
+      </div>
+    </div>
+    

@@ -1,0 +1,87 @@
+<div class="container bread-container">
+<%= render 'layouts/flash' %>
+  <div id="breadcrum">
+    <%= render_breadcrumbs %>
+  </div>
+</div>
+
+<div class="container">
+<div class="row content-content">
+  <div class="col-md-7 border-right">
+    <div class="disclaimer">
+       <p><b>Disclaimer:</b> <%= @episode.name %> is provided and hosted from a third-party video-sharing website like YouTube, Veoh, Megavideo, Myspace and other sites by which Anibeam does not own or is not affiliated to in any way. All videos under <%= @episode.series.name %> and episodes before <%= @episode.name %> are <b>EMBEDDED VIDEOS</b> from these said sites and <%= @episode.name %> is not hosted, uploaded or owned by Anibeam or its Server. In case of copyright infringement, please directly contact the responsible parties. You can click to go to the actual <%= link_to 'video source', "#" %>.</p>
+    </div>
+    <h1><%= @episode.name %> <small><%= link_to 'Edit', edit_episode_path(@episode), remote: true %></small></h1>
+	  <div class="row">
+      <div class="col-md-9 sm-font">
+        <p>The following <%= @episode.name %> with English Sub has been released. Anibeam will always be the first to have the episode so please Bookmark and add us on Facebook for update.</p>
+      </div>
+      <div class="col-md-3 text-right">       
+       <%= render 'episodes/prevnext' %>
+      </div>
+    </div>
+    
+    <div class="embed-responsive embed-responsive-16by9" id="movie">
+ 	    <%= @episode.video_code.html_safe %>
+    </div>
+ 
+    <div class="row video-option">
+      <div class="col-md-3 no-left-right">
+        <div class="fb-like" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+        
+        
+      </div>
+      <div class="col-md-3 no-left-right">
+        <center><b>Views:</b> <%= @episode.view_count %></center>  
+      </div>
+      <div class="col-md-3 no-left-right">
+       
+          <center><%= link_to 'Turn Off', "#disclaimer", class: "lightSwitcher" %></center>
+        
+      </div>
+      <div class="col-md-3 report-btn">
+        <%= link_to 'Report Broken', new_report_path(:episode_id => @episode.id), remote: true, class: "btn btn-sm btn-danger" %>
+      </div>
+    </div>
+            
+        <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=705835326160298&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+     
+   <%= content_tag(:div, nil, :class => 'fb-comments', "data-href" => "#{request.original_url}", "data-width" => "100%", "data-num-posts" => "20" ) %>
+  
+  </div>
+  <div class="col-md-3 border-right">
+    <%= render 'layouts/search' %>
+    <%= render 'layouts/facebook' %>
+  </div>
+
+  <div class="col-md-2">
+
+  </div>
+
+</div>
+</div>
+
+<div id="shadow"></div>
+
+
+
+<script>
+$(document).ready(function(){
+    $("#shadow").css("height", $(document).height()).hide();
+    $(".lightSwitcher").click(function(){
+        $("#shadow").toggle();
+        if ($("#shadow").is(":hidden"))
+            $(this).html("Turn Off").removeClass("turnedOff");
+        else
+            $(this).html("Turn On").addClass("turnedOff");
+    });
+});
+</script>
+

@@ -1,0 +1,41 @@
+<div class="container bread-container">
+  <%= render 'layouts/flash' %>
+  <div id="breadcrum">
+    <%= render_breadcrumbs %>
+  </div>
+  <div class="pull-right bookmarklet">
+          
+
+  </div>
+</div>
+
+<div class="container">
+<div class="row content-content">
+  <div class="col-md-7 border-right">
+    
+    <div class="panel panel-default">
+      <div class="panel-heading"><b>Recent Ongoing Episodes</b></div>
+      <table class="table table-bordered">
+        <tbody>
+          <% @OngoingEpisodes.each do |episode| %>
+            <tr>
+              <td><%= link_to "#{episode.name}", episode %><span class="upload-date"><%= episode.created_at.strftime("%A, %-d %b %Y") %></span></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      </div>
+    <%= paginate @OngoingEpisodes %>
+    </div>
+
+ 
+   <div class="col-md-3 border-right">
+    <%= render 'layouts/search' %>
+    <%= render 'layouts/facebook' %>
+   </div>
+
+   <div class="col-md-2">
+  </div>
+</div>
+
+</div>

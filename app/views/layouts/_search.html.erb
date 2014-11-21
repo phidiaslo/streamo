@@ -1,0 +1,8 @@
+<div class="search-box">
+<%= search_form_for @search, url: search_series_index_path, html: { method: :post } do |f| %>
+  <div class="form-inline">
+     <%= f.text_field :name_cont, placeholder: 'Find Anime', class: "form-control input-sm" %>
+     <%= f.submit "Search", class: "btn btn-sm btn-primary" %>
+  </div>
+<% end %>
+</div>
